@@ -15,3 +15,12 @@
 .wall {
     background-color: #333;
 }
+.hero{
+    position: absolute;
+    background-image: url("Assets/Hero/hero1.png");
+    background-size: cover;
+    height:30px;
+    width: 55px;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease ;
+}
