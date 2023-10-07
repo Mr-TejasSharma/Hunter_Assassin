@@ -1,26 +1,41 @@
-#maze {
-    display: grid;
-    grid-template-columns: repeat(1000, 30px);
-    grid-template-rows: repeat(1000, 30px);
-    gap: 2px;
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-.cell {
+/* #maze {
+
+    display: grid;
+    grid-template-columns: repeat(100, 30px);
+    grid-template-rows: repeat(100, 30px);
+    gap: 2px;
+} */
+
+/* .cell {
     width: 30px;
     height: 30px;
     background-color: #fff;
     border: 1px solid #000;
+} */
+
+/* .wall {
+    background-color: #333;
+} */
+
+canvas {
+    border: 1px solid black;
+    width: 600px;
+    height: 600px;
 }
 
-.wall {
-    background-color: #333;
-}
-.hero{
+
+/* .hero {
     position: absolute;
-    background-image: url("Assets/Hero/hero1.png");
+    background-color: red;
     background-size: cover;
-    height:30px;
-    width: 55px;
+    height: 800px;
+    width: 500px;
     background-repeat: no-repeat;
-    transition: transform 0.5s ease ;
-}
+    transition: transform 0.5s ease;
+} */

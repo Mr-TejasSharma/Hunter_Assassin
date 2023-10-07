@@ -1,50 +1,43 @@
-const mazeContainer = document.getElementById("maze");
+import { mazeWall } from './maze.js';
+import { hero, handleKeydown, handleKeyup, updateHero } from './hero.js';
 
-const mazePattern = [
+const canvas = document.getElementById("maze");
+const ctx = canvas.getContext("2d");
 
-    "###################",
-    "#........#........#",
-    "#.##.###.#.###.##.#",
-    "#.................#",
-    "#.##.#.#####.#.##.#",
-    "#....#...#...#....#",
-    "####.###.#.###.####",
-    "####.#.......#.####",
-    "####.#.##.##.#.####",
-    "#......#...#......#",
-    "####.#.#####.#.####",
-    "####.#.......#.####",
-    "####.#.#####.#.####",
-    "#........#........#",
-    "#.##.###.#.###.##.#",
-    "#..#...........#..#",
-    "##.#.#.#####.#.#.##",
-    "#....#...#...#....#",
-    "#.######.#.######.#",
-    "#.................#",
-    "###################"
+const cell = 30;
 
-];
-
-const renderMaze = (mazePattern, container) => {
-    let mazeHTML = "";
-    for (let i = 0; i < mazePattern.length; i++) {
-        mazeHTML += "<div>";
-        for (let j = 0; j < mazePattern[i].length; j++) {
-            const cell = mazePattern[i][j];
-
-            const cellDiv = document.createElement("div");
-            cellDiv.className = "cell";
-            if (cell === '#') {
-                cellDiv.classList.add("wall");
+let renderMaze = () => {
+    ctx.fillStyle = "black";
+    for (let i = 0; i < mazeWall.length; i++) {
+        for (let j = 0; j < mazeWall[i].length; j++) {
+            if (mazeWall[i][j] === '#') {
+                ctx.fillRect(j * cell, i * cell, cell, cell);
             }
-
-            mazeHTML += cellDiv.outerHTML;
-
         }
-        mazeHTML += "</div>";
     }
-    container.innerHTML = mazeHTML;
 };
 
-renderMaze(mazePattern, mazeContainer);
+let drawHero = () => {
+    ctx.fillStyle = "blue";
+    ctx.fillRect(hero.x, hero.y, hero.width, hero.height);
+};
+
+let update = () => {
+    clearCanvas();
+    renderMaze();
+    drawHero();
+    updateHero();
+
+    requestAnimationFrame(update);
+};
+
+let clearCanvas = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+};
+
+canvas.width = mazeWall[0].length * cell;
+canvas.height = mazeWall.length * cell;
+
+window.addEventListener("keydown", handleKeydown);
+window.addEventListener("keyup", handleKeyup);
+update();
