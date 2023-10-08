@@ -1,11 +1,15 @@
 body{
-    background-color: #5cd6be;
+    background-color: aquamarine;
 }
-#setting{
+
+#icon:hover{
+    height: 50px;
+    width: 50px;
+}
+#icon{
     position: relative;
     text-align: left;
-    font-size: 50px;
-    font-weight: 300;
+    cursor: pointer;
 }
 #shop{
     position: relative;
@@ -104,7 +108,7 @@ main{
     border: 1px solid white;
     border-radius: 12px;
 }
-.four{
+/* .four{
     background-color:#61677A;
     color: white;
     font-size: 20px;
@@ -120,7 +124,7 @@ main{
     padding-left: 2%;
     border: 1px solid white;
     border-radius: 12px;
-}
+} */
 
 .start{
     background-color:#f7f705;
@@ -142,7 +146,7 @@ main{
     border: 3px solid black;
     border-radius: 12px;
 }
-#level{
+/* #level{
     position: relative;
     margin-top: 1px;
     padding-left: 5%;
@@ -151,7 +155,7 @@ main{
     font-weight: 600;
     overflow: auto;
 
-}
+} */
 
 .claim{
    position: relative;
