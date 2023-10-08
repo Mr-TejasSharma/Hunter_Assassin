@@ -1,8 +1,26 @@
 import { mazeWall } from './maze.js';
-import { enemy, updateEnemy } from './enemy.js';
+import Enemy from './enemy.js';
 import { hero, handleKeydown, handleKeyup, updateHero } from './hero.js';
 import { detectEnemy } from './enemyDetection.js';
 import { killEnemy } from './enemyKill.js';
+
+const enemy1 = new Enemy(510, 30, "left");
+const enemy2 = new Enemy(120, 270, "up");
+const enemy3 = new Enemy(180, 210, "down");
+const enemy4 = new Enemy(270, 450, "right");
+const enemy5 = new Enemy(30, 570, "up");
+const enemy6 = new Enemy(510, 270, "down");
+
+
+let enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
+
+let updateEnemies = () => {
+    for (let enemy of enemies) {
+        enemy.updateEnemy();
+        killEnemy(enemy);
+
+    }
+};
 
 const canvas = document.getElementById("maze");
 const ctx = canvas.getContext("2d");
@@ -28,30 +46,24 @@ let drawHero = () => {
 };
 
 let drawEnemy = () => {
-    ctx.fillStyle = "red";
-    ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+    for (let enemy of enemies) {
+        if (enemy.alive) {
+            ctx.fillStyle = "red";
+            ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+        }
+    }
 };
 
 let enemyDead = false;
-if (killEnemy())
-    enemyDead = true;
-
-let update2 = () => {
-    if (killEnemy())
-        enemyDead = true;
-    if (!enemyDead)
-        drawEnemy();
-    updateEnemy();
-    //detectEnemy();
-    requestAnimationFrame(update2);
-};
 
 let update = () => {
     clearCanvas();
     renderMaze();
-    drawHero();
-    updateHero();
+    drawEnemy();
 
+    drawHero();
+    updateEnemies();
+    updateHero();
     requestAnimationFrame(update);
 };
 
@@ -66,4 +78,3 @@ window.addEventListener("keydown", handleKeydown);
 window.addEventListener("keyup", handleKeyup);
 // setInterval(update2, 500);
 update();
-update2();

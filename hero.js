@@ -7,6 +7,7 @@ export let hero = {
   height: 30,
   dx: 0,
   dy: 0,
+  health: 100,
 };
 
 export let handleKeydown = (event) => {
@@ -71,4 +72,5 @@ export let updateHero = () => {
 
   hero.x += hero.dx;
   hero.y += hero.dy;
+  console.log(hero.x + " " + hero.y);
 };
