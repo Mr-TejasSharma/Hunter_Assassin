@@ -1,5 +1,7 @@
 import { mazeWall } from './maze.js';
+import { enemy, updateEnemy } from './enemy.js';
 import { hero, handleKeydown, handleKeyup, updateHero } from './hero.js';
+// import { enemy, updateEnemy } from './enemy.js';
 
 const canvas = document.getElementById("maze");
 const ctx = canvas.getContext("2d");
@@ -22,6 +24,17 @@ let drawHero = () => {
     ctx.fillRect(hero.x, hero.y, hero.width, hero.height);
 };
 
+let drawEnemy = () => {
+    ctx.fillStyle = "red";
+    ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+};
+
+let update2 = () => {
+    drawEnemy();
+    updateEnemy();
+    requestAnimationFrame(update2);
+};
+
 let update = () => {
     clearCanvas();
     renderMaze();
@@ -40,4 +53,6 @@ canvas.height = mazeWall.length * cell;
 
 window.addEventListener("keydown", handleKeydown);
 window.addEventListener("keyup", handleKeyup);
+// setInterval(update2, 500);
 update();
+update2();
