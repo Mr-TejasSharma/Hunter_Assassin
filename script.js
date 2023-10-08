@@ -1,7 +1,8 @@
 import { mazeWall } from './maze.js';
 import { enemy, updateEnemy } from './enemy.js';
 import { hero, handleKeydown, handleKeyup, updateHero } from './hero.js';
-// import { enemy, updateEnemy } from './enemy.js';
+import { detectEnemy } from './enemyDetection.js';
+import { killEnemy } from './enemyKill.js';
 
 const canvas = document.getElementById("maze");
 const ctx = canvas.getContext("2d");
@@ -22,6 +23,8 @@ let renderMaze = () => {
 let drawHero = () => {
     ctx.fillStyle = "blue";
     ctx.fillRect(hero.x, hero.y, hero.width, hero.height);
+    if (detectEnemy)
+        ctx.fillStyle = "green";
 };
 
 let drawEnemy = () => {
@@ -29,9 +32,17 @@ let drawEnemy = () => {
     ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
 };
 
+let enemyDead = false;
+if (killEnemy())
+    enemyDead = true;
+
 let update2 = () => {
-    drawEnemy();
+    if (killEnemy())
+        enemyDead = true;
+    if (!enemyDead)
+        drawEnemy();
     updateEnemy();
+    //detectEnemy();
     requestAnimationFrame(update2);
 };
 

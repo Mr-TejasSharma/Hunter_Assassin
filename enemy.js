@@ -44,46 +44,46 @@ export let updateEnemy = () => {
                     if (enemy.direction === "right") {
                         if (random >= 5) {
                             enemy.direction = "down";
-                            enemy.dy = 3;
+                            enemy.dy = 1;
                             enemy.dx = 0;
                         }
                         else {
                             enemy.direction = "up";
-                            enemy.dy = -3;
+                            enemy.dy = -1;
                             enemy.dx = 0;
                         }
                     } else if (enemy.direction === "down") {
                         if (random >= 5) {
                             enemy.direction = "left";
                             enemy.dy = 0;
-                            enemy.dx = -3;
+                            enemy.dx = -1;
                         }
                         else {
                             enemy.direction = "right";
                             enemy.dy = 0;
-                            enemy.dx = 3;
+                            enemy.dx = 1;
                         }
                     } else if (enemy.direction === "left") {
                         if (random >= 5) {
                             enemy.direction = "up";
-                            enemy.dy = -3;
+                            enemy.dy = -1;
                             enemy.dx = 0;
                         }
                         else {
                             enemy.direction = "down";
-                            enemy.dy = 3;
+                            enemy.dy = 1;
                             enemy.dx = 0;
                         }
                     } else if (enemy.direction === "up") {
                         if (random >= 5) {
                             enemy.direction = "right";
                             enemy.dy = 0;
-                            enemy.dx = 3;
+                            enemy.dx = 1;
                         }
                         else {
                             enemy.direction = "left";
                             enemy.dy = 0;
-                            enemy.dx = -3;
+                            enemy.dx = -1;
                         }
                     }
                 }
@@ -93,6 +93,7 @@ export let updateEnemy = () => {
 
     enemy.x += enemy.dx;
     enemy.y += enemy.dy;
+    return true;
 };
 
 
