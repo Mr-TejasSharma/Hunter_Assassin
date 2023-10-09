@@ -1,82 +1,87 @@
-body{
+body {
     background-color: aquamarine;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
-#icon:hover{
+#icon:hover {
     height: 50px;
     width: 50px;
 }
-#icon{
+
+#icon {
     position: relative;
     text-align: left;
     cursor: pointer;
 }
-#shop{
+
+#shop {
     position: relative;
     text-align: right;
     font-size: 50px;
     font-weight: 300;
 }
 
-.title{
+.title {
     position: relative;
     text-align: center;
     font-size: 50px;
     font-family: 'Young Serif', serif;
     line-height: 0.9;
-    font-weight:900;
+    font-weight: 900;
     text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 0px black;
-    
+
 }
-#hunter{
+
+#hunter {
     color: rgb(237, 71, 71);
 }
-#assa{
+
+#assa {
     position: relative;
     text-align: center;
     color: white;
 }
-main{
+
+main {
     font-family: 'Young Serif', serif;
 }
 
-.one{
-    background-color:#4e3b8f ;
+.one {
+    background-color: #4e3b8f;
     color: white;
-    font-size: 20px ;
+    font-size: 20px;
     font-weight: 500;
     position: relative;
     height: 100px;
     width: 400px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
-     margin-top: 40px;
+    margin-top: 40px;
     margin-left: 350px;
     padding-top: 3%;
     padding-left: 2%;
     border: 1px solid white;
     border-radius: 12px;
-    }
+}
 
-    #collect{
-    
-          height: 20px;
-          width: 500px;
-          margin-top: 3px;
-          padding-left: 10%; 
-          padding-right:15% ;
-          border: 1px solid #bdbdbd;
-          border-radius: 12px;
-          background-color: #700ee8;
+#collect {
+
+    height: 20px;
+    width: 500px;
+    margin-top: 3px;
+    padding-left: 10%;
+    padding-right: 15%;
+    border: 1px solid #bdbdbd;
+    border-radius: 12px;
+    background-color: #700ee8;
 
 
-    }
-    
-.two{
-    background-color:#61677A;
+}
+
+.two {
+    background-color: #61677A;
     color: white;
     font-size: 20px;
     font-weight: 500;
@@ -86,7 +91,7 @@ main{
     margin-top: 40px;
     margin-left: 350px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-   padding-top: 4%;
+    padding-top: 4%;
     padding-left: 2%;
     border: 1px solid white;
     border-radius: 12px;
@@ -94,8 +99,8 @@ main{
 
 
 
-.three{
-    background-color:#61677A;
+.three {
+    background-color: #61677A;
     color: white;
     font-size: 20px;
     font-weight: 500;
@@ -106,11 +111,12 @@ main{
     margin-left: 350px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
-     padding-top: 1%;
+    padding-top: 1%;
     padding-left: 2%;
     border: 1px solid white;
     border-radius: 12px;
 }
+
 /* .four{
     background-color:#61677A;
     color: white;
@@ -129,8 +135,8 @@ main{
     border-radius: 12px;
 } */
 
-.start{
-    background-color:#f7f705;
+.start {
+    background-color: #f7f705;
     box-shadow: 10px 10px 15px black;
     color: white;
     font-size: 30px;
@@ -149,6 +155,7 @@ main{
     border: 3px solid black;
     border-radius: 12px;
 }
+
 /* #level{
     position: relative;
     margin-top: 1px;
@@ -160,39 +167,40 @@ main{
 
 } */
 
-.claim{
-   position: relative;
+.claim {
+    position: relative;
     color: #f7f705;
-    height:60px;
-    width:150px;
+    height: 60px;
+    width: 150px;
     float: right;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     text-align: center;
     margin-top: 1px;
     margin-right: 20px;
-    background-color:#6ff22e;
+    background-color: #6ff22e;
     border: 1px solid black;
     border-radius: 5px;
-    }
-.claimS{
+}
+
+.claimS {
     position: relative;
-     color: #f7f705;
-     height:60px;
-     width:150px;
-     float: right;
-     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-     text-align: center;
-     margin-top: 3%;
-     margin-right: 20px;
-     background-color:#6ff22e;
-     border: 1px solid black;
-     border-radius: 5px;
-     
-    }
-    
-    a{
-        text-decoration: none;
-    }
+    color: #f7f705;
+    height: 60px;
+    width: 150px;
+    float: right;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
+    margin-top: 3%;
+    margin-right: 20px;
+    background-color: #6ff22e;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
+
+a {
+    text-decoration: none;
+}
 
 
 /* #maze {
@@ -230,4 +238,3 @@ canvas {
     background-repeat: no-repeat;
     transition: transform 0.5s ease;
 } */
-

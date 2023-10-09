@@ -3,8 +3,8 @@ import { mazeWall } from './maze.js';
 export let hero = {
   x: 30,
   y: 30,
-  width: 30,
-  height: 30,
+  width: 20,
+  height: 20,
   dx: 0,
   dy: 0,
   health: 100,
@@ -12,13 +12,13 @@ export let hero = {
 
 export let handleKeydown = (event) => {
   if (event.key === "ArrowLeft" || event.key === "Left") {
-    hero.dx = -3;
+    hero.dx = -2;
   } else if (event.key === "ArrowRight" || event.key === "Right") {
-    hero.dx = 3;
+    hero.dx = 2;
   } else if (event.key === "ArrowUp" || event.key === "Up") {
-    hero.dy = -3;
+    hero.dy = -2;
   } else if (event.key === "ArrowDown" || event.key === "Down") {
-    hero.dy = 3;
+    hero.dy = 2;
   }
 };
 

@@ -57,10 +57,16 @@ export default class Enemy {
                         let random = Math.random() * 10;
 
                         if (this.direction === "right") {
-                            if (random >= 5) {
+
+                            if (random >= 3) {
                                 this.direction = "down";
                                 this.dy = 1;
                                 this.dx = 0;
+                            }
+                            else if (random >= 7) {
+                                this.direction = "left";
+                                this.dy = 0;
+                                this.dx = -1;
                             }
                             else {
                                 this.direction = "up";
@@ -68,10 +74,15 @@ export default class Enemy {
                                 this.dx = 0;
                             }
                         } else if (this.direction === "down") {
-                            if (random >= 5) {
+                            if (random >= 3) {
                                 this.direction = "left";
                                 this.dy = 0;
                                 this.dx = -1;
+                            }
+                            else if (random >= 7) {
+                                this.direction = "up";
+                                this.dy = -1;
+                                this.dx = 0;
                             }
                             else {
                                 this.direction = "right";
@@ -79,10 +90,15 @@ export default class Enemy {
                                 this.dx = 1;
                             }
                         } else if (this.direction === "left") {
-                            if (random >= 5) {
+                            if (random >= 3) {
                                 this.direction = "up";
                                 this.dy = -1;
                                 this.dx = 0;
+                            }
+                            else if (random >= 7) {
+                                this.direction = "right";
+                                this.dy = 0;
+                                this.dx = 1;
                             }
                             else {
                                 this.direction = "down";
@@ -90,10 +106,15 @@ export default class Enemy {
                                 this.dx = 0;
                             }
                         } else if (this.direction === "up") {
-                            if (random >= 5) {
+                            if (random >= 3) {
                                 this.direction = "right";
                                 this.dy = 0;
                                 this.dx = 1;
+                            }
+                            else if (random >= 7) {
+                                this.direction = "down";
+                                this.dy = 1;
+                                this.dx = 0;
                             }
                             else {
                                 this.direction = "left";
