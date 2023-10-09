@@ -13,12 +13,13 @@ const enemy6 = new Enemy(510, 270, "left");
 
 const wallImage = new Image();
 wallImage.src = './Assets/Background/images.png';
-wallImage.onload = function () {
-    renderMaze();
-};
 
 const cellImage = new Image();
 cellImage.src = './Assets/Background/images (2).jpeg';
+
+const heroImage = new Image();
+heroImage.src = './Assets/Hero/hero1.png';
+
 
 
 let enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
@@ -61,17 +62,31 @@ let renderMaze = () => {
 };
 
 let drawHero = () => {
+
+    ctx.beginPath();
+    ctx.arc(hero.x + 10, hero.y + 10, hero.width / 2, 0, 2 * Math.PI);
     ctx.fillStyle = "blue";
-    ctx.fillRect(hero.x, hero.y, hero.width, hero.height);
-    if (detectEnemy)
-        ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // ctx.fillStyle = "blue";
+    //ctx.fillRect(hero.x, hero.y, hero.width, hero.height);
+
 };
 
 let drawEnemy = () => {
     for (let enemy of enemies) {
         if (enemy.alive) {
+            ctx.beginPath();
+            ctx.arc(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width / 2, 0, 2 * Math.PI);
             ctx.fillStyle = "red";
-            ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+            // ctx.fillStyle = "red";
+            // ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
         }
     }
 };
@@ -82,7 +97,6 @@ let update = () => {
     clearCanvas();
     renderMaze();
     drawEnemy();
-
     drawHero();
     updateEnemies();
     updateHero();
@@ -98,5 +112,4 @@ canvas.height = mazeWall.length * cell;
 
 window.addEventListener("keydown", handleKeydown);
 window.addEventListener("keyup", handleKeyup);
-// setInterval(update2, 500);
 update();

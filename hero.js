@@ -8,19 +8,44 @@ export let hero = {
   dx: 0,
   dy: 0,
   health: 100,
+  direction: "left",
+  directionAngle: 0,
 };
 
 export let handleKeydown = (event) => {
   if (event.key === "ArrowLeft" || event.key === "Left") {
+    hero.direction = "left";
     hero.dx = -2;
   } else if (event.key === "ArrowRight" || event.key === "Right") {
+    hero.direction = "right";
     hero.dx = 2;
   } else if (event.key === "ArrowUp" || event.key === "Up") {
+    hero.direction = "up";
     hero.dy = -2;
   } else if (event.key === "ArrowDown" || event.key === "Down") {
+    hero.direction = "down";
     hero.dy = 2;
   }
 };
+
+// function heroRotation() {
+//   switch (hero.direction) {
+//     case 'left':
+//       hero.rotationAngle = 270;
+//       break;
+//     case 'right':
+//       hero.rotationAngle = 90;
+//       break;
+//     case 'up':
+//       hero.rotationAngle = 0;
+//       break;
+//     case 'down':
+//       hero.rotationAngle = 180;
+//       break;
+//     default:
+//       break;
+//   }
+// }
 
 export let handleKeyup = (event) => {
   if (event.key === "ArrowLeft" || event.key === "Left" || event.key === "ArrowRight" || event.key === "Right") {
