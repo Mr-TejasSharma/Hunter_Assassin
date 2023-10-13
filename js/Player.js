@@ -1,4 +1,17 @@
-let Player = {
+// let Player = {
+//   x: 30,
+//   y: 30,
+//   width: 20,
+//   height: 20,
+//   dx: 0,
+//   dy: 0,
+//   health: 100,
+//   // direction: "left",
+//   // directionAngle: 0,
+//   score: 0,
+// };
+
+let initialPlayerState = {
   x: 30,
   y: 30,
   width: 20,
@@ -6,10 +19,13 @@ let Player = {
   dx: 0,
   dy: 0,
   health: 100,
-  direction: "left",
-  directionAngle: 0,
+  // direction: "left",
+  // directionAngle: 0,
   score: 0,
 };
+
+let Player = { ...initialPlayerState };
+
 
 function handleKeydown(event) {
   if (event.key === "ArrowLeft" || event.key === "Left") {
@@ -41,9 +57,9 @@ function updatePlayer() {
   let nextX = Player.x + Player.dx;
   let nextY = Player.y + Player.dy;
 
-  for (let i = 0; i < mazeWall.length; i++) {
-    for (let j = 0; j < mazeWall[i].length; j++) {
-      let cell = mazeWall[i][j];
+  for (let i = 0; i < randomMaze.length; i++) {
+    for (let j = 0; j < randomMaze[i].length; j++) {
+      let cell = randomMaze[i][j];
       if (cell === '#') {
         let cellX = j * 30;
         let cellY = i * 30;
@@ -74,6 +90,7 @@ function updatePlayer() {
 
   Player.x += Player.dx;
   Player.y += Player.dy;
+  killPlayer();
 };
 
 function drawPlayer() {
@@ -86,3 +103,40 @@ function drawPlayer() {
   ctx.stroke();
 
 };
+
+
+function drawScore() {
+  ctx.font = "bold 30px Arial";
+  if (wallImage.complete)
+    ctx.fillStyle = "black";
+  else
+    ctx.fillStyle = "white";
+  ctx.fillText("Score: " + Player.score, 55, 22);
+  //ctx.fillText("Score: " + Player.score, 5, 22);
+}
+
+function drawHealthBar() {
+  let healthBarWidth = 50;
+  let healthPercentage = (Player.health / 100) * healthBarWidth;
+
+  let fillColor;
+  if (Player.health <= 30) {
+    fillColor = "red";
+  } else if (Player.health <= 60) {
+    fillColor = "yellow";
+  } else {
+    fillColor = "green";
+  }
+
+  ctx.fillStyle = "gray";
+  ctx.fillRect(Player.x - Player.width + 5, Player.y - 12, healthBarWidth, 10);
+
+  ctx.fillStyle = fillColor;
+  ctx.fillRect(Player.x - Player.width + 5, Player.y - 12, healthPercentage, 10);
+
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(Player.x - Player.width + 5, Player.y - 12, healthBarWidth, 10);
+  ctx.strokeRect(Player.x - Player.width + 5, Player.y - 12, healthPercentage, 10);
+
+}
