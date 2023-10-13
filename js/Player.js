@@ -57,9 +57,9 @@ function updatePlayer() {
   let nextX = Player.x + Player.dx;
   let nextY = Player.y + Player.dy;
 
-  for (let i = 0; i < mazeWall.length; i++) {
-    for (let j = 0; j < mazeWall[i].length; j++) {
-      let cell = mazeWall[i][j];
+  for (let i = 0; i < randomMaze.length; i++) {
+    for (let j = 0; j < randomMaze[i].length; j++) {
+      let cell = randomMaze[i][j];
       if (cell === '#') {
         let cellX = j * 30;
         let cellY = i * 30;

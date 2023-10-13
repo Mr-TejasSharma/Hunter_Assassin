@@ -36,9 +36,9 @@ class Enemy {
         let nextX = this.x + this.dx;
         let nextY = this.y + this.dy;
 
-        for (let i = 0; i < mazeWall.length; i++) {
-            for (let j = 0; j < mazeWall[i].length; j++) {
-                let cell = mazeWall[i][j];
+        for (let i = 0; i < randomMaze.length; i++) {
+            for (let j = 0; j < randomMaze[i].length; j++) {
+                let cell = randomMaze[i][j];
                 if (cell === '#') {
                     let cellX = j * 30;
                     let cellY = i * 30;
@@ -136,43 +136,6 @@ function resetAllEnemies() {
     }
 }
 
-function detectEnemy(enemy) {
-
-    let rangeX = enemy.x + 150;
-    let rangeY = enemy.y + 150;
-
-    if (enemy.direction === "right") {
-
-        if (rangeX + 30 <= Player.x && enemy.y >= Player.y && enemy.y <= Player.y + 30) {
-            Player.health -= 10;
-            enemy.dx = 2;
-            enemy.dy = 0;
-        }
-
-    } else if (enemy.direction === "left") {
-        rangeX *= -1;
-        if (rangeX <= Player.x + 30 && enemy.y >= Player.y && enemy.y <= Player.y + 30) {
-            Player.health -= 10;
-            enemy.dx = -2;
-            enemy.dy = 0;
-        }
-    } else if (enemy.direction === "up") {
-        rangeY *= -1;
-        if (rangeY <= Player.y + 30 && enemy.x >= Player.x && enemy.x <= Player.x + 30) {
-            Player.health -= 10;
-            enemy.dx = 0;
-            enemy.dy = -2;
-        }
-    } else if (enemy.direction === "up") {
-        if (rangeY + 30 <= Player.y && enemy.x >= Player.x && enemy.x <= Player.x + 30) {
-            Player.health -= 10;
-            enemy.dx = 0;
-            enemy.dy = 2;
-        }
-    }
-}
-
-
 function killEnemy(enemy) {
     if (enemy.alive && Player.x + 30 > enemy.x &&
         Player.x < enemy.x + 30 &&
@@ -225,7 +188,7 @@ function checkWall(x1, y1, x2, y2, direction) {
             return true;
         }
         for (let i = x1; i < x2; i++) {
-            if (mazeWall[y2][i] == '#')
+            if (randomMaze[y2][i] == '#')
                 return true;
         }
         return false;
@@ -235,7 +198,7 @@ function checkWall(x1, y1, x2, y2, direction) {
             return true;
         }
         for (let i = x2; i < x1; i++) {
-            if (mazeWall[y2][i] == '#')
+            if (randomMaze[y2][i] == '#')
                 return true;
         }
         return false;
@@ -245,7 +208,7 @@ function checkWall(x1, y1, x2, y2, direction) {
             return true;
         }
         for (let i = y1; i < y2; i++) {
-            if (mazeWall[i][x2] == '#')
+            if (randomMaze[i][x2] == '#')
                 return true;
         }
         return false;
@@ -255,7 +218,7 @@ function checkWall(x1, y1, x2, y2, direction) {
             return true;
         }
         for (let i = y2; i < y1; i++) {
-            if (mazeWall[i][x2] == '#')
+            if (randomMaze[i][x2] == '#')
                 return true;
         }
         return false;
@@ -322,5 +285,6 @@ function restartClicked() {
     Player.score = 0;
     Object.assign(Player, initialPlayerState);
     resetAllEnemies();
+    randomMaze = getRandomMaze();
     requestAnimationFrame(update);
 }

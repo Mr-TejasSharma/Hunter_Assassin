@@ -3,8 +3,8 @@
 const canvas = document.getElementById("maze");
 const ctx = canvas.getContext("2d");
 const cell = 30;
-canvas.width = mazeWall[0].length * cell;
-canvas.height = mazeWall.length * cell;
+canvas.width = randomMaze[0].length * cell;
+canvas.height = randomMaze.length * cell;
 // Enemies
 
 // const enemy1 = new Enemy(510, 30, "left");
