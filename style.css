@@ -202,39 +202,8 @@ a {
     text-decoration: none;
 }
 
-
-/* #maze {
-
-    display: grid;
-    grid-template-columns: repeat(100, 30px);
-    grid-template-rows: repeat(100, 30px);
-    gap: 2px;
-} */
-
-/* .cell {
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border: 1px solid #000;
-} */
-
-/* .wall {
-    background-color: #333;
-} */
-
 canvas {
     border: 1px solid black;
     width: 600px;
     height: 600px;
 }
-
-
-/* .hero {
-    position: absolute;
-    background-color: red;
-    background-size: cover;
-    height: 800px;
-    width: 500px;
-    background-repeat: no-repeat;
-    transition: transform 0.5s ease;
-} */
