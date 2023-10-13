@@ -86,3 +86,36 @@ function drawPlayer() {
   ctx.stroke();
 
 };
+
+
+function drawScore() {
+  ctx.font = "bold 24px Arial";
+  ctx.fillStyle = "black";
+  ctx.fillText("Score: " + Player.score, 2, 22);
+}
+
+function drawHealthBar() {
+  let healthBarWidth = 50;
+  let healthPercentage = (Player.health / 100) * healthBarWidth;
+
+  let fillColor;
+  if (Player.health <= 30) {
+    fillColor = "red";
+  } else if (Player.health <= 60) {
+    fillColor = "yellow";
+  } else {
+    fillColor = "green";
+  }
+
+  ctx.fillStyle = "gray";
+  ctx.fillRect(Player.x - Player.width + 5, Player.y - 12, healthBarWidth, 10);
+
+  ctx.fillStyle = fillColor;
+  ctx.fillRect(Player.x - Player.width + 5, Player.y - 12, healthPercentage, 10);
+
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(Player.x - Player.width + 5, Player.y - 12, healthBarWidth, 10);
+  ctx.strokeRect(Player.x - Player.width + 5, Player.y - 12, healthPercentage, 10);
+
+}

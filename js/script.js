@@ -17,8 +17,6 @@ const enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 // Images
 const wallImage = new Image();
 
-let enemyDead = false;
-
 wallImage.src = './Assets/Background/images.png';
 
 const cellImage = new Image();
@@ -27,18 +25,11 @@ cellImage.src = './Assets/Background/images (2).jpeg';
 const heroImage = new Image();
 heroImage.src = './Assets/Hero/hero1.png';
 
-
-function drawScore() {
-    ctx.font = "bold 24px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Score: " + Player.score, 2, 22);
-}
-
-
 function update() {
     clearCanvas();
     renderMaze();
     drawScore();
+    drawHealthBar();
     drawEnemy();
     drawPlayer();
     updateEnemies();

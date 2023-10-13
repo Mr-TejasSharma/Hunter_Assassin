@@ -177,6 +177,7 @@ function updateEnemies() {
     for (let enemy of enemies) {
         enemy.updateEnemy();
         killEnemy(enemy);
+        killPlayer();
 
     }
 }
@@ -231,7 +232,7 @@ function checkWall(x1, y1, x2, y2, direction) {
         }
         return false;
     }
-    else if (direction == "right") {
+    else if (direction == "down") {
         if (x1 != x2) {
             return true;
         }
@@ -248,22 +249,22 @@ function detectEnemy(enemy) {
     const range = 150;
 
     if (enemy.direction === "left") {
-        if (enemy.x - range <= hero.x + hero.width && enemy.x >= hero.x + hero.width && !checkWall(hero.x, hero.y, enemy.x, enemy.y, enemy.direction)) {
+        if (enemy.x - range <= Player.x + Player.width && enemy.x >= Player.x + Player.width && !checkWall(Player.x, Player.y, enemy.x, enemy.y, enemy.direction)) {
             return true;
         }
     }
     else if (enemy.direction === "right") {
-        if (enemy.x + enemy.width + range <= hero.x && hero.x >= enemy.x + enemy.width && !checkWall(hero.x, hero.y, enemy.x, enemy.y, enemy.direction)) {
+        if (enemy.x + enemy.width + range >= Player.x && Player.x >= enemy.x + enemy.width && !checkWall(Player.x, Player.y, enemy.x, enemy.y, enemy.direction)) {
             return true;
         }
     }
     else if (enemy.direction === "up") {
-        if (enemy.y - range <= hero.y + hero.height && enemy.y >= hero.y + hero.height && !checkWall(hero.x, hero.y, enemy.x, enemy.y, enemy.direction)) {
+        if (enemy.y - range <= Player.y + Player.height && enemy.y >= Player.y + Player.height && !checkWall(Player.x, Player.y, enemy.x, enemy.y, enemy.direction)) {
             return true;
         }
     }
     else if (enemy.direction === "down") {
-        if (enemy.y + enemy.height + range <= hero.y && hero.y >= enemy.y + enemy.height && !checkWall(hero.x, hero.y, enemy.x, enemy.y, enemy.direction)) {
+        if (enemy.y + enemy.height + range >= Player.y && Player.y >= enemy.y + enemy.height && !checkWall(Player.x, Player.y, enemy.x, enemy.y, enemy.direction)) {
             return true;
         }
     }
@@ -274,12 +275,14 @@ function detectEnemy(enemy) {
 
 };
 
-function killHero(enemies) {
+function killPlayer() {
 
     for (let enemy of enemies) {
         if (detectEnemy(enemy)) {
-            console.log(hero.health);
-            hero.health -= 1;
+            console.log(Player.health);
+            Player.health -= 0.1;
+            if (Player.health < 0)
+                Player.health = 0;
         }
     }
 
