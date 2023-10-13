@@ -25,6 +25,13 @@ class Enemy {
         this.alive = true;
     }
 
+    reset(x, y, direction) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
+        this.alive = true;
+    }
+
     updateEnemy() {
         let nextX = this.x + this.dx;
         let nextY = this.y + this.dy;
@@ -122,6 +129,13 @@ class Enemy {
 
 }
 
+function resetAllEnemies() {
+    enemies.splice(0, enemies.length);
+    for (let position of initialPositions) {
+        enemies.push(new Enemy(position.x, position.y, position.direction));
+    }
+}
+
 function detectEnemy(enemy) {
 
     let rangeX = enemy.x + 150;
@@ -170,6 +184,10 @@ function killEnemy(enemy) {
         if (index !== -1) {
             enemies.splice(index, 1);
         }
+
+    }
+    if (Player.score == 60) {
+        gameLoop(1);
     }
 }
 
@@ -177,7 +195,7 @@ function updateEnemies() {
     for (let enemy of enemies) {
         enemy.updateEnemy();
         killEnemy(enemy);
-        killPlayer();
+
 
     }
 }
@@ -280,11 +298,29 @@ function killPlayer() {
     for (let enemy of enemies) {
         if (detectEnemy(enemy)) {
             console.log(Player.health);
-            Player.health -= 0.1;
-            if (Player.health < 0)
+            Player.health -= 0.5;
+            if (Player.health < 0 && !GameOver) {
                 Player.health = 0;
+                gameLoop(2);
+            }
         }
     }
-
-
 };
+
+function gameLoop(choice) {
+    if ((Player.score == 60 || Player.health <= 0) && !GameOver) {
+        GameOver = true;
+        gameRunning = false;
+        drawGameOverScreen(choice);
+    }
+    requestAnimationFrame(gameLoop(choice));
+}
+function restartClicked() {
+    GameOver = false;
+    gameRunning = true;
+    Player.health = 100;
+    Player.score = 0;
+    Object.assign(Player, initialPlayerState);
+    resetAllEnemies();
+    requestAnimationFrame(update);
+}

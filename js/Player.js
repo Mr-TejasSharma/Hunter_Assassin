@@ -1,4 +1,17 @@
-let Player = {
+// let Player = {
+//   x: 30,
+//   y: 30,
+//   width: 20,
+//   height: 20,
+//   dx: 0,
+//   dy: 0,
+//   health: 100,
+//   // direction: "left",
+//   // directionAngle: 0,
+//   score: 0,
+// };
+
+let initialPlayerState = {
   x: 30,
   y: 30,
   width: 20,
@@ -6,10 +19,13 @@ let Player = {
   dx: 0,
   dy: 0,
   health: 100,
-  direction: "left",
-  directionAngle: 0,
+  // direction: "left",
+  // directionAngle: 0,
   score: 0,
 };
+
+let Player = { ...initialPlayerState };
+
 
 function handleKeydown(event) {
   if (event.key === "ArrowLeft" || event.key === "Left") {
@@ -74,6 +90,7 @@ function updatePlayer() {
 
   Player.x += Player.dx;
   Player.y += Player.dy;
+  killPlayer();
 };
 
 function drawPlayer() {
@@ -89,9 +106,13 @@ function drawPlayer() {
 
 
 function drawScore() {
-  ctx.font = "bold 24px Arial";
-  ctx.fillStyle = "black";
-  ctx.fillText("Score: " + Player.score, 2, 22);
+  ctx.font = "bold 30px Arial";
+  if (wallImage.complete)
+    ctx.fillStyle = "black";
+  else
+    ctx.fillStyle = "white";
+  ctx.fillText("Score: " + Player.score, 55, 22);
+  //ctx.fillText("Score: " + Player.score, 5, 22);
 }
 
 function drawHealthBar() {
